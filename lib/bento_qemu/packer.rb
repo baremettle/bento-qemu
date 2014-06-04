@@ -10,7 +10,11 @@ module BentoQemu
         std_in = args.fetch(:input, nil)
         cmd = [%(packer build)]
         cmd << packer_options
-        cmd << template unless std_in
+        if std_in
+          cmd << '-'
+        else
+          cmd << template
+        end
         shellout = Mixlib::ShellOut.new(cmd.join(' '), :timeout => 3600)
         shellout.cwd = shell_cwd
         shellout.input = std_in

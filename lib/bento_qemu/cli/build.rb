@@ -8,6 +8,8 @@ module BentoQemu
                     e.g. "-var 'key1=val1' -var 'key2=val2'"
                   EOS
     method_option :skip_minimize,
+                  :type => :boolean,
+                  :default => false,
                   :desc => <<-EOS.gsub(/^ {20}/, '').gsub(/\n/, ' ')
                     attempt to remove 'minimize.sh' script from template
                     before building

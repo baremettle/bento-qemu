@@ -56,7 +56,7 @@ module BentoQemu
 
     def convert_image
       cmd, env = image_conversion_command
-      shellout = MixLib::ShellOut.new(cmd, :timeout => 3600, :env => env)
+      shellout = Mixlib::ShellOut.new(cmd, :timeout => 3600, :env => env)
       shellout.cwd = artifact_dir
       shellout.live_stream = STDOUT
       shellout.run_command
@@ -69,7 +69,7 @@ module BentoQemu
       when 'qemu-img'
         cmd = %(qemu-img convert -p -O qcow2)
       when 'virt-sparsify'
-        cmd = %(TMPDIR='.' virt-sparsify --machine-readable --convert qcow2)
+        cmd = %(TMPDIR='.' virt-sparsify --convert qcow2)
         env = { 'LIBGUESTFS_CACHEDIR' => '/var/tmp', 'TMPDIR' => '.' }
       else
         fail "Unsupported conversion tool #{@convert_tool}"
