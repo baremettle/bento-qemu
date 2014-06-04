@@ -12,9 +12,7 @@ module BentoQemu
     attr_writer :box_name
 
     def box_dir=(dir)
-      unless File.directory?(dir)
-        fail ArgumentError, "Invalid directory #{dir}"
-      end
+      fail ArgumentError, "Invalid directory #{dir}" unless File.directory?(dir)
       @box_dir = dir
     end
 
@@ -26,23 +24,17 @@ module BentoQemu
     def initialize(args = {})
       @keep_artifact = args.fetch('keep_artifact', false)
       @convert_tool = args.fetch('convert_tool', 'qemu-img')
-      @force_convert = args.fetch('force_convert', false)
       @box_name = args.fetch('box_name', nil)
 
       which!('qemu-img')
       which!(@convert_tool) if @convert_tool != 'qemu-img'
-      @force_convert = true if @convert_tool == 'virt-sparsify'
 
       @image_format = 'qcow2'
       @image_name = 'box.img'
     end
 
     def build
-      if @force_convert || !verify_format
-        convert_image
-      else
-        Dir.chdir(artifact_dir) { FileUtils.cp @artifact_name, @image_name }
-      end
+      convert_image
 
       Dir.chdir(artifact_dir) do
         File.open('metadata.json', 'w') { |file| file.write(metadata) }
@@ -90,10 +82,8 @@ module BentoQemu
       files = %W(metadata.json Vagrantfile #{@image_name})
       files << artifact_name unless keep_artifact
       Dir.chdir(artifact_dir) { FileUtils.rm files }
-
-      if !keep_artifact && dir_empty?(artifact_dir)
-        FileUtils.rm_rf artifact_dir
-      end
+      return unless !keep_artifact && dir_empty?(artifact_dir)
+      FileUtils.rm_rf artifact_dir
     end
 
     def metadata
@@ -118,11 +108,6 @@ module BentoQemu
 
     def virtual_size
       extract_from_qemu_info(/(\d+) bytes/)
-    end
-
-    def verify_format
-      format_found = extract_from_qemu_info(/file format: (\w+)/)
-      format_found == @image_format
     end
 
     def extract_from_qemu_info(expression)

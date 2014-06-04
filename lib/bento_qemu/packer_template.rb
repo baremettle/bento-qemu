@@ -87,9 +87,8 @@ module BentoQemu
       templ = template_hash || @template
       if templ.key?('provisioners')
         templ['provisioners'].each do |p|
-          if p['scripts']
-            p['scripts'].delete_if { |s| s.end_with?('minimize.sh') }
-          end
+          next unless p['scripts']
+          p['scripts'].delete_if { |s| s.end_with?('minimize.sh') }
         end
       end
       templ

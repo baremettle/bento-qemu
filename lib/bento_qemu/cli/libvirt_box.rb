@@ -12,10 +12,6 @@ module BentoQemu
                   :enum => %w(qemu-img virt-sparsify),
                   :default => 'qemu-img',
                   :desc => 'Tool used to convert images')
-    method_option(:force_convert,
-                  :type => :boolean,
-                  :default => false,
-                  :desc => 'Force image conversion/compression')
     method_option(:box_name,
                   :desc => 'Box name (Default: ARTIFACT_NAME.box')
     method_option(:box_dir,
