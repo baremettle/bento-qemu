@@ -48,7 +48,7 @@ module BentoQemu
     def add_qemu_builder # rubocop: disable CyclomaticComplexity
       return nil if select_builder('type' => 'qemu').count > 0
       vbox_find = builders.find { |b| b['type'] == 'virtualbox-iso' }
-      return nil unless vbox_find.nil? || vbox_find.empty?
+      return nil if vbox_find.nil? || vbox_find.empty?
 
       # Stupid hack to deep copy
       vbox = Marshal.load(Marshal.dump(vbox_find))
