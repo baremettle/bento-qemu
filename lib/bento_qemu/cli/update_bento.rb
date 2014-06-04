@@ -19,13 +19,6 @@ module BentoQemu
       FileUtils.rm_rf "#{bento_dir}.tmp" if File.directory?("#{bento_dir}.tmp")
 
       add_qemu_builders
-      # packer_dir = config['packer_dir']
-      # dirs = Dir.glob("#{bento_dir}/*").select { |f| File.directory? f }
-      # FileUtils.mkdir_p(packer_dir) unless File.directory?(packer_dir)
-      # dirs.each do |dir|
-      #   link_name = File.join(packer_dir, File.basename(dir))
-      #   FileUtils.ln_sf(File.expand_path(dir), link_name)
-      # end
     end
 
     private

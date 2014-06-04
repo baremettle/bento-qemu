@@ -24,14 +24,5 @@ module BentoQemu
       exe
     end
 
-    def rm_rf?(pattern, options)
-      files = Dir.glob(pattern)
-      question = "OK to delete #{files.count} files/directories? (y/N)"
-      if files.count > 0 && (options[:force] || yes?(question))
-        FileUtils.rm_rf(files)
-      elsif files.count == 0
-        say "No files found in #{pattern}"
-      end
-    end
   end
 end

@@ -1,22 +1,30 @@
 module BentoQemu
   class CLI < Thor
 
-    desc('clean cache|builds|artifacts|templates', 'Clean the house')
+    desc('clean cache|builds|artifacts', 'Clean the house')
     method_option(:force, :desc => 'Do not ask, just do it')
     def clean(what)
       case what
       when 'cache'
-        rm_rf?("#{config['packer_dir']}/packer_cache/*", options)
+        rm_rf?(Dir.glob("#{config['bento_dir']}/packer_cache/*"), options)
       when 'builds'
-        rm_rf?("#{config['build_dir']}/**/*.box", options)
+        rm_rf?(Dir.glob("#{config['build_dir']}/**/*.box"), options)
       when 'artifacts'
-        %w(artifacts packer).each do |dir|
-          pattern = "#{dir}/{packer,output}-*"
-          FileUtils.rm_rf Dir.glob(pattern).select { |f| File.directory? f }
-        end
-      when 'templates'
-        rm_rf?("#{config['packer_dir']}/*.json", options)
+        files = Dir.glob("#{bento_dir}/{packer,output}-*")
+        rm_rf?(files.select { |f| File.directory? f })
       end
     end
+
+    private
+
+    def rm_rf?(list, options)
+      question = "OK to delete #{files.count} files/directories? (y/N)"
+      if files.count > 0 && (options[:force] || yes?(question))
+        FileUtils.rm_rf(files)
+      elsif files.count == 0
+        say "No files found in #{pattern}"
+      end
+    end
+
   end
 end
