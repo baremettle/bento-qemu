@@ -1,0 +1,13 @@
+Documentation:
+  Enabled: false
+
+EmptyLinesAroundBody:
+  Enabled: false
+
+HashSyntax:
+  EnforcedStyle: hash_rockets
+
+RegexpLiteral:
+  MaxSlashes: 0
+
+inherit_from: rubocop-todo.yml

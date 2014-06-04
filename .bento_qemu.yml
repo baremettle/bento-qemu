@@ -1,0 +1,8 @@
+---
+bento_repo_owner: opscode
+bento_repo_name: bento
+bento_ref: master
+artifact_dir: ../artifacts
+build_dir: ./builds
+bento_dir: ./bento
+packer_dir: ./packer_qemu

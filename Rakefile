@@ -10,5 +10,5 @@ begin
   Gem::Tasks.new
 rescue LoadError => e
   warn e.message
-  warn "Run `gem install rubygems-tasks` to install Gem::Tasks."
+  warn 'Run `gem install rubygems-tasks` to install Gem::Tasks.'
 end
