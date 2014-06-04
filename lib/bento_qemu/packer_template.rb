@@ -25,6 +25,10 @@ module BentoQemu
       JSON.pretty_generate(@template)
     end
 
+    def to_json
+      @template.to_json
+    end
+
     def builders
       @template['builders']
     end
@@ -83,15 +87,12 @@ module BentoQemu
       end
     end
 
-    def strip_minimize(template_hash = nil)
-      templ = template_hash || @template
-      if templ.key?('provisioners')
-        templ['provisioners'].each do |p|
-          next unless p['scripts']
-          p['scripts'].delete_if { |s| s.end_with?('minimize.sh') }
-        end
+    def strip_minimize
+      return unless template.key?('provisioners')
+      template['provisioners'].each do |p|
+        next unless p['scripts']
+        p['scripts'].delete_if { |s| s.end_with?('minimize.sh') }
       end
-      templ
     end
 
     private

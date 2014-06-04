@@ -23,7 +23,7 @@ module BentoQemu
       if files.count > 0 && (options[:force] || yes?(question))
         FileUtils.rm_rf(files)
       elsif files.count == 0
-        say "No files found"
+        say 'No files found'
       end
     end
 

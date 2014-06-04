@@ -19,15 +19,16 @@ module BentoQemu
       args = {}
       args[:packer_options] = options[:packer_options]
       args[:cwd] = File.dirname(File.absolute_path(template))
-      args[:input] = template_minimize_stripped if options[:skip_minimize]
+      args[:input] = minimize_stripped(template) if options[:skip_minimize]
       Packer.build(filename, args)
     end
 
     private
 
-    def template_minimize_stripped
-      template = PackerTemplate.new(:filename => template)
+    def minimize_stripped(filename)
+      template = PackerTemplate.new(:filename => filename)
       template.strip_minimize
+      template.to_json
     end
 
   end
