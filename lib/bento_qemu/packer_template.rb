@@ -84,15 +84,15 @@ module BentoQemu
     end
 
     def strip_minimize(template_hash = nil)
-      template = template_hash || @template
-      if template.key?('provisioners')
-        template['provisioners'].each do |p|
+      templ = template_hash || @template
+      if templ.key?('provisioners')
+        templ['provisioners'].each do |p|
           if p['scripts']
             p['scripts'].delete_if { |s| s.end_with?('minimize.sh') }
           end
         end
       end
-      template
+      templ
     end
 
     private
