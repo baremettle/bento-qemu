@@ -8,10 +8,19 @@ module BentoQemu
 
     attr_accessor :artifact_name, :artifact_dir, :keep_artifact, :box_dir
 
+    attr_reader :box_dir
     attr_writer :box_name
 
+    def box_dir=(dir)
+      unless File.directory?(dir)
+        fail ArgumentError, "Invalid directory #{dir}"
+      end
+      @box_dir = dir
+    end
+
     def box_name
-      @box_name || "#{@artifact_name}.box"
+      basename = File.basename(@artifact_name, File.extname(@artifact_name))
+      @box_name || "#{basename}.box"
     end
 
     def initialize(args = {})
@@ -29,20 +38,24 @@ module BentoQemu
     end
 
     def build
-      convert_image if @force_convert || !verify_format
+      if @force_convert || !verify_format
+        convert_image
+      else
+        Dir.chdir(artifact_dir) { FileUtils.cp @artifact_name, @image_name }
+      end
 
       Dir.chdir(artifact_dir) do
         File.open('metadata.json', 'w') { |file| file.write(metadata) }
-        File.open('VagrantFile', 'w') { |file| file.write(vagrantfile) }
+        File.open('Vagrantfile', 'w') { |file| file.write(vagrantfile) }
       end
 
       cmd = %(tar czf #{box_name} metadata.json Vagrantfile #{@image_name})
-      shellout = MixLib::ShellOut.new(cmd, :cwd => artifact_dir)
+      shellout = Mixlib::ShellOut.new(cmd, :cwd => artifact_dir)
       shellout.run_command
       shellout.error!
 
       target = File.join(box_dir, box_name)
-      FileUtils.mv File.join(artifact_dir, artifact_name), target
+      FileUtils.mv File.join(artifact_dir, box_name), target
       clean_artifact_dir
       target
     end
@@ -74,7 +87,7 @@ module BentoQemu
     end
 
     def clean_artifact_dir
-      files = %W(metadata.json, Vagrantfile, #{@image_name})
+      files = %W(metadata.json Vagrantfile #{@image_name})
       files << artifact_name unless keep_artifact
       Dir.chdir(artifact_dir) { FileUtils.rm files }
 
@@ -84,13 +97,13 @@ module BentoQemu
     end
 
     def metadata
-      <<-EOF.gsub(/^ {6}/, '')
+      <<-EOS.gsub(/^ {6}/, '')
       {
         "provider" => "libvirt",
         "format" => "qcow",
-        "virtual_size" => "#{virtual_size / 1_073_741_824}""
+        "virtual_size" => "#{virtual_size.to_i / 1_073_741_824}""
       }
-      EOF
+      EOS
     end
 
     def vagrantfile

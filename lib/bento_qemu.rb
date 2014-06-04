@@ -3,6 +3,7 @@ require 'bento_qemu/version'
 require 'bento_qemu/util'
 require 'bento_qemu/packer_template'
 require 'bento_qemu/packer'
+require 'bento_qemu/libvirt_box'
 
 require 'pathname'
 

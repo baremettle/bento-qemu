@@ -13,7 +13,6 @@ module BentoQemu
                     before building
                   EOS
     def build(template)
-      dir = File.dirname(File.absolute_path(template))
       filename = File.basename(template)
       args = {}
       args[:packer_options] = options[:packer_options]
