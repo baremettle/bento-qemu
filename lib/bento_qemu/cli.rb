@@ -7,6 +7,7 @@ Dir[File.dirname(__FILE__) + '/cli/*.rb'].each { |file| require file }
 
 module BentoQemu
   class CLI < Thor
+    namespace 'bento-qemu'
     include BentoQemu::Util
 
     no_tasks do
