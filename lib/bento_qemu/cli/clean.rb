@@ -18,6 +18,7 @@ module BentoQemu
     private
 
     def rm_rf?(list, options)
+      files = Array(list)
       question = "OK to delete #{files.count} files/directories? (y/N)"
       if files.count > 0 && (options[:force] || yes?(question))
         FileUtils.rm_rf(files)
