@@ -10,8 +10,8 @@ module BentoQemu
       when 'builds'
         rm_rf?(Dir.glob("#{config['build_dir']}/**/*.box"), options)
       when 'artifacts'
-        files = Dir.glob("#{bento_dir}/{packer,output}-*")
-        rm_rf?(files.select { |f| File.directory? f })
+        files = Dir.glob("#{config['bento_dir']}/{packer,output}-*")
+        rm_rf?(files.select { |f| File.directory? f }, options)
       end
     end
 

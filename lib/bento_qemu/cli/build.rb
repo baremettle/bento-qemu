@@ -13,11 +13,13 @@ module BentoQemu
                     before building
                   EOS
     def build(template)
+      dir = File.dirname(File.absolute_path(template))
+      filename = File.basename(template)
       args = {}
       args[:packer_options] = options[:packer_options]
-      args[:cwd] = File.absolute_path(template)
+      args[:cwd] = File.dirname(File.absolute_path(template))
       args[:input] = template_minimize_stripped if options[:skip_minimize]
-      Packer.build(template, args)
+      Packer.build(filename, args)
     end
 
     private
