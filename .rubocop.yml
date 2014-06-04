@@ -10,4 +10,4 @@ HashSyntax:
 RegexpLiteral:
   MaxSlashes: 0
 
-inherit_from: rubocop-todo.yml
+inherit_from: .rubocop_todo.yml
