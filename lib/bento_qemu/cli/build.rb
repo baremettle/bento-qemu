@@ -15,7 +15,7 @@ module BentoQemu
     def build(template)
       args = {}
       args[:packer_options] = options[:packer_options]
-      args[:cwd] = config['bento_dir']
+      args[:cwd] = File.absolute_path(template)
       args[:input] = template_minimize_stripped if options[:skip_minimize]
       Packer.build(template, args)
     end
