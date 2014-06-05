@@ -35,6 +35,7 @@ Commands:
 - Packer (generating qcow2 files)
 - qemu-img (for building libvirt box)
 - virt-sparsify (optional, for box building)
+
 ## TODO
 - Documentation
 - Command(s) to chain packer builds and libvirt box creation
