@@ -36,6 +36,16 @@ Commands:
   bento-qemu update-bento                  # Download bento repository
   bento-qemu validate                      # Validate packer templates in bento directory
 ```
+The tool uses a small user-configurable YAML file for storing config info.  It can be created with the init command.  Typical initial workflow is something like:
+```
+$ bundle exec bento-qemu init
+$ bundle exec bento-qemu update-bento
+$ bundle exec bento-qemu validate
+$ bundle exec bento-qemu [build | build-and-box | invoke-from-yaml] etc.
+```
+The "invoke-from-yaml" is intended to create an automated workflow for builds, etc. A `sample_tasks.yml`
+file is included, but any thor task in this app can be ran as long as it exists.
+
 ## Requirements
 - thor
 - mixlib-shellout
