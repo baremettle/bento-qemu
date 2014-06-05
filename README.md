@@ -16,7 +16,7 @@ bento-qemu is a wrapper around Chef Software's
 - Other misc. tasks for template validation, cleanup, etc.
 
 ## Install / Examples / Etc.
-Documentation pending
+Documentation pending, but here's some currently available commands/tasks
 ```
 $ bento_qemu 
 Commands:
@@ -35,10 +35,13 @@ Commands:
 - Packer (generating qcow2 files)
 - qemu-img (for building libvirt box)
 - virt-sparsify (optional, for box building)
+## TODO
+- Documentation
+- Command(s) to chain packer builds and libvirt box creation
+- Build from list
+- Build from pattern (e.g. Bento's existing packer build task)
 
 ## Copyright
-
-
 ```text
 Copyright (c) 2014 Brian Clark
 
