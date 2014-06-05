@@ -15,7 +15,13 @@ bento-qemu is a wrapper around Chef Software's
 - Ability to dynamically "strip" Bento's `minimize.sh` script from template on-the-fly during packer build process (template is parsed and injected to packer STDIN). Saves time (and MB) when using virt-sparsify tool downstream to create basebox.
 - Other misc. tasks for template validation, cleanup, etc.
 
-## Install / Examples / Etc.
+## Installation
+Currently the best thing to do is use clone this repo from GitHub and use bundler:
+
+    $ git clone blah
+    $ cd blah
+    $ bundle install #--path vendor if you wanna throw it away easily
+
 Documentation is pending, but here's the current list of commands:
 ```
 $ bundle exec bento-qemu
