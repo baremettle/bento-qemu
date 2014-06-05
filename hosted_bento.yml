@@ -1,0 +1,51 @@
+---
+tasks:
+  - name: update-bento
+  - name: validate
+  # - name: build-and-box
+  #   arguments:
+  #   - bento/ubuntu-14.04-amd64.json
+  #   options:
+  #     build_only: qemu
+  #     packer_options: "-var 'mirror=/home/brian/ISO/ubuntu'"
+  #     skip_minimize: true
+  #     box_name: baremettle-ubuntu-14.04-libvirt.box
+  #     convert_tool: virt-sparsify
+  #     force: true
+  - name: build-and-box
+    arguments:
+    - bento/ubuntu-12.04-amd64.json
+    options:
+      build_only: qemu
+      packer_options: "-var 'mirror=/home/brian/ISO/ubuntu'"
+      skip_minimize: true
+      box_name: baremettle-ubuntu-12.04-libvirt.box
+      convert_tool: virt-sparsify
+      force: true
+  - name: build-and-box
+    arguments:
+    - bento/debian-7.5-amd64.json
+    options:
+      build_only: qemu
+      skip_minimize: true
+      box_name: baremettle-debian-7.5-libvirt.box
+      convert_tool: virt-sparsify
+      force: true
+  - name: build-and-box
+    arguments:
+    - bento/centos-6.5-x86_64.json
+    options:
+      build_only: qemu
+      skip_minimize: true
+      box_name: baremettle-centos-6.5-libvirt.box
+      convert_tool: virt-sparsify
+      force: true
+  - name: build-and-box
+    arguments:
+    - bento/centos-5.10-x86_64.json
+    options:
+      build_only: qemu
+      skip_minimize: true
+      box_name: baremettle-centos-5.10-libvirt.box
+      convert_tool: virt-sparsify
+      force: true
