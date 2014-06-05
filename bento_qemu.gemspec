@@ -5,8 +5,8 @@ require File.expand_path('../lib/bento_qemu/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = 'bento_qemu'
   gem.version       = BentoQemu::VERSION
-  gem.summary       = %q(TODO: Summary)
-  gem.description   = %q(TODO: Description)
+  gem.summary       = %q(Wrapper around Chef's Bento to add qemu and vagrant-libvirt support)
+  gem.description   = gem.summary
   gem.license       = 'MIT'
   gem.authors       = ['Brian Clark']
   gem.email         = 'brian@clark.zone'
@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
+  gem.add_dependency 'thor'
   gem.add_dependency 'mixlib-shellout'
   gem.add_development_dependency 'rubygems-tasks', '~> 0.2'
 end
