@@ -15,9 +15,8 @@ module BentoQemu
 
       unzip_dir = "#{repo}-#{ref}"
       %w(packer README.md LICENSE).each do |f|
-        if File.exist?("#{unzip_dir}/#{f}")
-          FileUtils.mv("#{unzip_dir}/#{f}", bento_dir)
-        end
+        next unless File.exist?("#{unzip_dir}/#{f}")
+        FileUtils.mv("#{unzip_dir}/#{f}", bento_dir)
       end
       FileUtils.rm_rf unzip_dir
       FileUtils.rm_rf "#{bento_dir}.tmp" if File.directory?("#{bento_dir}.tmp")

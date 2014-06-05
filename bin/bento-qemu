@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+# rubocop:disable Style/FileName
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), %w(.. lib))
 require 'bento_qemu/cli'
 

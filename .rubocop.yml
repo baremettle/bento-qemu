@@ -1,3 +1,8 @@
+AllCops:
+  Exclude:
+    - README.md
+    - bento_qemu.gemspec
+
 Documentation:
   Enabled: false
 
