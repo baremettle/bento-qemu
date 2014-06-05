@@ -3,7 +3,7 @@
 bento-qemu is a wrapper around Chef Software's
 [Bento](http://opscode.github.io/bento) project that assists with creating
 [Vagrant](http://vagrantup.com) baseboxes compatible with
-[vagrant-libvirt](https://github.com/pradels/vagrant-libvirt) and (eventually)
+[vagrant-libvirt](https://github.com/pradels/vagrant-libvirt) and (eventually?)
 [vagrant-kvm](https://github.com/adrahon/vagrant-kvm) providers.
 
 
@@ -40,7 +40,7 @@ Commands:
 - Documentation
 - Command(s) to chain packer builds and libvirt box creation
 - Build from list
-- Build from pattern (e.g. Bento's existing packer build task)
+- Build from pattern/wildcard (e.g. Bento's existing packer build task)
 
 ## Copyright
 ```text
