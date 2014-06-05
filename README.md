@@ -16,7 +16,7 @@ bento-qemu is a wrapper around Chef Software's
 - Other misc. tasks for template validation, cleanup, etc.
 
 ## Hosted Baseboxes
-This is a placeholder.  I intend to put a handful of libvirt baseboxes for popular distros on
+This is a placeholder. I intend to put a handful of libvirt baseboxes for popular distros on
 [Vagrant Cloud](https://vagrantcloud.com/) when I have the chance. They will be discoverable
 there; however I'll also include links to the actual box files here as well.
 ## Installation
