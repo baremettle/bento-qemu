@@ -19,5 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'thor', '~> 0.18'
   gem.add_dependency 'mixlib-shellout', '~> 1.4'
+
+  gem.add_development_dependency 'rubocop'
   gem.add_development_dependency 'rubygems-tasks', '~> 0.2'
 end
