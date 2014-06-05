@@ -6,7 +6,7 @@ tasks:
     arguments:
     - bento/ubuntu-14.04-amd64.json
     options:
-      only: qemu
+      build_only: qemu
       packer_options: "-var 'mirror=/foo/bar'"
       skip_minimize: true
       box_name: ubuntu-14.04-libvirt.box
@@ -16,7 +16,7 @@ tasks:
     arguments:
     - bento/ubuntu-14.04-amd64.json
     options:
-      only: qemu
+      build_only: qemu
       packer_options: "-var 'mirror=/foo/bar'"
       skip_minimize: true
       box_name: ubuntu-14.04-libvirt.box
