@@ -16,7 +16,7 @@ bento-qemu is a wrapper around Chef Software's
 - Other misc. tasks for template validation, cleanup, etc.
 
 ## Installation
-Currently the best thing to do is use clone this repo from GitHub and use bundler:
+Currently the best thing to do is to clone this repo and use bundler:
 
     $ git clone blah
     $ cd blah
