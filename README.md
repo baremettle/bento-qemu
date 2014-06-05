@@ -1,6 +1,6 @@
 # bento-qemu
 
-Bento-Qemu is a wrapper around Chef Software's
+bento-qemu is a wrapper around Chef Software's
 [Bento](http://opscode.github.io/bento) project that assists with creating
 [Vagrant](http://vagrantup.com) baseboxes compatible with
 [vagrant-libvirt](https://github.com/pradels/vagrant-libvirt) and (eventually)
@@ -12,12 +12,23 @@ Bento-Qemu is a wrapper around Chef Software's
 - Download Bento templates/scripts and add QEMU builders to all templates with a single command
 - Compatible with all Bento templates that have a Virtualbox builder (used as basis for creating QEMU builder)
 - Create sparse qcow2 libvirt box using qemu-img or virt-sparsify
-- Ability to dynamically "strip" Bento's `minimize.sh` script from template on-the-fly during packer build process (template is parsed and injected to packer STDIN). Save's time (and MB) when using virt-sparsify tool downstream to create basebox.
+- Ability to dynamically "strip" Bento's `minimize.sh` script from template on-the-fly during packer build process (template is parsed and injected to packer STDIN). Saves time (and MB) when using virt-sparsify tool downstream to create basebox.
 - Other misc. tasks for template validation, cleanup, etc.
 
 ## Install / Examples / Etc.
 Documentation pending
+```
+$ bento_qemu 
+Commands:
+  bento_qemu build                         # Run packer build
+  bento_qemu clean cache|builds|artifacts  # Clean the house
+  bento_qemu help [COMMAND]                # Describe available commands or one specific command
+  bento_qemu init                          # Create .bento_qemu.yml configuration file
+  bento_qemu libvirt-box TEMPLATE_FILE     # Convert qemu artifact to vagrant-libvirt compatible box
+  bento_qemu update-bento                  # Download bento repository
+  bento_qemu validate                      # Validate packer templates in bento_dir
 
+```
 ## Requirements
 - thor
 - mixlib-shellout
