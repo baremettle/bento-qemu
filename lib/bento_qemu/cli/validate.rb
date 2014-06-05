@@ -18,7 +18,7 @@ module BentoQemu
         end
 
         if fail_count > 0
-          say "Validation failed on #{fail_count} templates"
+          say "Validation failed on #{fail_count} template(s)", :red
           exit(1)
         end
       end
