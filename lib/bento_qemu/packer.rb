@@ -5,7 +5,7 @@ module BentoQemu
     class << self
 
       def build(template, args = {})
-        packer_options = args.fetch(:packer_options, [])
+        packer_options = args[:packer_options] || []
         shell_cwd = args.fetch(:cwd, Dir.pwd)
         std_in = args.fetch(:input, nil)
         cmd = [%(packer build)]

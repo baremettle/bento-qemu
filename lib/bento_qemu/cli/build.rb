@@ -49,9 +49,20 @@ module BentoQemu
     method_option :force,
                   :type => :boolean,
                   :desc => 'Force overwrite box if exists'
-    def build_and_box(_template)
-      invoke('build')
-      invoke('libvirt-box')
+    def build_and_box(template)
+
+      invoke('build',
+             [template],
+             :packer_options => options[:packer_options],
+             :skip_minimize => options[:skip_minimize])
+
+      invoke('libvirt_box',
+             [template],
+             :keep_artifact => options[:keep_artifact],
+             :convert_tool => options[:convert_tool],
+             :box_name => options[:box_name],
+             :box_dir => options[:box_dir],
+             :force => options[:force])
     end
 
     private

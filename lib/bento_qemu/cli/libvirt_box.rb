@@ -48,12 +48,12 @@ module BentoQemu
     end
 
     def box_name
-      options.fetch('box_name',
-                    "#{File.basename(artifact, File.extname(artifact))}.box")
+      options['box_name'] ||
+        "#{File.basename(artifact, File.extname(artifact))}.box"
     end
 
     def box_directory
-      options.fetch('box_dir', config['build_dir'])
+      options['box_dir'] || config['build_dir']
     end
 
     def box_exist?
