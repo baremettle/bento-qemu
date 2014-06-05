@@ -16,18 +16,19 @@ bento-qemu is a wrapper around Chef Software's
 - Other misc. tasks for template validation, cleanup, etc.
 
 ## Install / Examples / Etc.
-Documentation pending, but here's some currently available commands/tasks
+Documentation is pending, but here's the current list of commands:
 ```
-$ bento_qemu 
+$ bundle exec bento-qemu
 Commands:
-  bento_qemu build                         # Run packer build
-  bento_qemu clean cache|builds|artifacts  # Clean the house
-  bento_qemu help [COMMAND]                # Describe available commands or one specific command
-  bento_qemu init                          # Create .bento_qemu.yml configuration file
-  bento_qemu libvirt-box TEMPLATE_FILE     # Convert qemu artifact to vagrant-libvirt compatible box
-  bento_qemu update-bento                  # Download bento repository
-  bento_qemu validate                      # Validate packer templates in bento_dir
-
+  bento-qemu build TEMPLATE                # Run packer build
+  bento-qemu build-and-box TEMPLATE        # Run packer build followed by libvirt-box
+  bento-qemu clean cache|builds|artifacts  # Clean the house
+  bento-qemu help [COMMAND]                # Describe available commands or one specific command
+  bento-qemu init                          # Create .bento_qemu.yml configuration file
+  bento-qemu invoke-from-yaml FILENAME     # Run one or more tasks described in a YAML file
+  bento-qemu libvirt-box TEMPLATE_FILE     # Convert qemu artifact to vagrant-libvirt compatible box
+  bento-qemu update-bento                  # Download bento repository
+  bento-qemu validate                      # Validate packer templates in bento directory
 ```
 ## Requirements
 - thor
@@ -38,8 +39,7 @@ Commands:
 
 ## TODO
 - Documentation
-- Command(s) to chain packer builds and libvirt box creation
-- Build from list
+- Tests and testing
 - Build from pattern/wildcard (e.g. Bento's existing packer build task)
 
 ## Copyright
