@@ -8,5 +8,6 @@ before_install:
 
 before_script: export PATH=$PATH:$PWD/packer
 
-script: bundle exec thor bento-qemu:invoke_from_yaml('./.travis_tasks.yml')
-
+script:
+  - bundle exec rubocop --config '.rubocop.yml'
+  - bundle exec thor bento-qemu:invoke_from_yaml('./.travis_tasks.yml')

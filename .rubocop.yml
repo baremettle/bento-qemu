@@ -2,6 +2,10 @@ AllCops:
   Exclude:
     - README.md
     - bento_qemu.gemspec
+    - .bundle*:/**/*
+    - .vendor/**/*
+    - vendor/**/*
+    - bundl*/**/*
 
 Documentation:
   Enabled: false
