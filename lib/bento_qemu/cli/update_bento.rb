@@ -14,7 +14,11 @@ module BentoQemu
       fail 'Command failed' unless $CHILD_STATUS.success?
 
       unzip_dir = "#{repo}-#{ref}"
-      FileUtils.mv("#{unzip_dir}/packer", bento_dir)
+      %w(packer README.md LICENSE).each do |f|
+        if File.exist?("#{unzip_dir}/#{f}")
+          FileUtils.mv("#{unzip_dir}/#{f}", bento_dir)
+        end
+      end
       FileUtils.rm_rf unzip_dir
       FileUtils.rm_rf "#{bento_dir}.tmp" if File.directory?("#{bento_dir}.tmp")
 
