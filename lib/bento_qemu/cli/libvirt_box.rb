@@ -5,7 +5,6 @@ module BentoQemu
          'Convert qemu artifact to vagrant-libvirt compatible box')
     method_option(:keep_artifact,
                   :type => :boolean,
-                  :default => false,
                   :desc => 'Keep artifact after converstion')
     method_option(:convert_tool,
                   :default => 'qemu-img',
