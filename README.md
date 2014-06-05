@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/bdclark/bento-qemu.svg?branch=master)](https://travis-ci.org/bdclark/bento-qemu)
 # bento-qemu
 
 bento-qemu is a wrapper around Chef Software's
