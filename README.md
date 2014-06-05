@@ -15,6 +15,10 @@ bento-qemu is a wrapper around Chef Software's
 - Ability to dynamically "strip" Bento's `minimize.sh` script from template on-the-fly during packer build process (template is parsed and injected to packer STDIN). Saves time (and MB) when using virt-sparsify tool downstream to create basebox.
 - Other misc. tasks for template validation, cleanup, etc.
 
+## Hosted Baseboxes
+This is a placeholder.  I intend to put a handful of libvirt baseboxes for popular distros on
+[Vagrant Cloud](https://vagrantcloud.com/) when I have the chance. They will be discoverable
+there; however I'll also include links to the actual box files here as well.
 ## Installation
 Currently the best thing to do is to clone this repo and use bundler:
 
