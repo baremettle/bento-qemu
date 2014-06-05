@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    bento_qemu (0.1.0)
+      mixlib-shellout
+      thor
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mixlib-shellout (1.4.0)
+    rubygems-tasks (0.2.4)
+    thor (0.19.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bento_qemu!
+  rubygems-tasks (~> 0.2)

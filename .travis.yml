@@ -8,7 +8,5 @@ before_install:
 
 before_script: export PATH=$PATH:$PWD/packer
 
-script:
-  - bundle exec thor bento_qemu:init
-  - bundle exec thor bento_qemu:update-bento
-  - bundle exec thor bento_qemu:validate
+script: bundle exec thor bento-qemu:invoke_from_yaml('./.travis_tasks.yml')
+

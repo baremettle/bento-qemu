@@ -15,4 +15,7 @@ HashSyntax:
 RegexpLiteral:
   MaxSlashes: 0
 
-inherit_from: .rubocop_todo.yml
+Style/MethodLength:
+  Max: 20
+
+# inherit_from: .rubocop_todo.yml

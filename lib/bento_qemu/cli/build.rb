@@ -2,10 +2,16 @@ module BentoQemu
   class CLI < Thor
 
     desc 'build TEMPLATE', 'Run packer build'
-    method_option :packer_options,
+    method_option :build_only,
+                  :type => :array,
                   :desc => <<-EOS.gsub(/^ {20}/, '').gsub(/\n/, ' ')
-                    string of options to pass to packer,
-                    e.g. "-var 'key1=val1' -var 'key2=val2'"
+                    only build the given builds by name
+                    e.g. --build-only qemu
+                  EOS
+    method_option :packer_options,
+                  :banner => 'STRING',
+                  :desc => <<-EOS.gsub(/^ {20}/, '')
+                    additional packer options, e.g. "-var 'key1=val1'"
                   EOS
     method_option :skip_minimize,
                   :type => :boolean,
@@ -17,16 +23,23 @@ module BentoQemu
       filename = File.basename(template)
       args = {}
       args[:packer_options] = options[:packer_options]
+      args[:build_only] = options[:build_only]
       args[:cwd] = File.dirname(File.absolute_path(template))
       args[:input] = minimize_stripped(template) if options[:skip_minimize]
       Packer.build(filename, args)
     end
 
     desc 'build-and-box TEMPLATE', 'Run packer build and libvirt-box'
-    method_option :packer_options,
+    method_option :build_only,
+                  :type => :array,
                   :desc => <<-EOS.gsub(/^ {20}/, '').gsub(/\n/, ' ')
-                    string of options to pass to packer,
-                    e.g. "-var 'key1=val1' -var 'key2=val2'"
+                    only build the given builds by name
+                    e.g. --build-only qemu
+                  EOS
+    method_option :packer_options,
+                  :banner => 'STRING',
+                  :desc => <<-EOS.gsub(/^ {20}/, '')
+                    additional packer options, e.g. "-var 'key1=val1'"
                   EOS
     method_option :skip_minimize,
                   :type => :boolean,
@@ -54,6 +67,7 @@ module BentoQemu
       invoke('build',
              [template],
              :packer_options => options[:packer_options],
+             :build_only => options[:build_only],
              :skip_minimize => options[:skip_minimize])
 
       invoke('libvirt_box',

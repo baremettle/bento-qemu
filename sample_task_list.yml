@@ -1,0 +1,25 @@
+---
+tasks:
+  - name: update-bento
+  - name: validate
+  - name: build-and-box
+    arguments:
+    - bento/ubuntu-14.04-amd64.json
+    options:
+      only: qemu
+      packer_options: "-var 'mirror=/foo/bar'"
+      skip_minimize: true
+      box_name: ubuntu-14.04-libvirt.box
+      convert_tool: virt-sparsify
+      force: true
+  - name: build-and-box
+    arguments:
+    - bento/ubuntu-14.04-amd64.json
+    options:
+      only: qemu
+      packer_options: "-var 'mirror=/foo/bar'"
+      skip_minimize: true
+      box_name: ubuntu-14.04-libvirt.box
+      convert_tool: virt-sparsify
+      force: true
+

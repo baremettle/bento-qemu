@@ -1,0 +1,5 @@
+---
+tasks:
+  - name: init
+  - name: update-bento
+  - name: validate
