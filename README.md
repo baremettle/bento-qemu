@@ -1,4 +1,4 @@
-## Bento-Qemu
+# bento-qemu
 
 Bento-Qemu is a wrapper around Chef Software's
 [Bento](http://opscode.github.io/bento) project that assists with creating
