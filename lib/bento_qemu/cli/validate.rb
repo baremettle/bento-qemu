@@ -17,7 +17,10 @@ module BentoQemu
           say
         end
 
-        fail "Validation failed on #{fail_count} templates" if fail_count > 0
+        if fail_count > 0
+          say "Validation failed on #{fail_count} templates"
+          exit(1)
+        end
       end
     end
   end

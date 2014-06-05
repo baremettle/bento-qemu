@@ -1,7 +1,7 @@
 module BentoQemu
   class CLI < Thor
 
-    desc 'build', 'Run packer build'
+    desc 'build TEMPLATE', 'Run packer build'
     method_option :packer_options,
                   :desc => <<-EOS.gsub(/^ {20}/, '').gsub(/\n/, ' ')
                     string of options to pass to packer,
@@ -22,7 +22,7 @@ module BentoQemu
       Packer.build(filename, args)
     end
 
-    desc 'build-and-box', 'Run packer build and libvirt-box'
+    desc 'build-and-box TEMPLATE', 'Run packer build and libvirt-box'
     method_option :packer_options,
                   :desc => <<-EOS.gsub(/^ {20}/, '').gsub(/\n/, ' ')
                     string of options to pass to packer,
