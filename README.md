@@ -26,11 +26,14 @@ Chef Client. All boxes listed below are 64-bit and are also discoverable
 on [Vagrant Cloud](https://vagrantcloud.com/).
 
 ### Libvirt
+TBA (currently testing)
+<!---
 * [baremettle/ubuntu-12.04](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-ubuntu-12.04-libvirt.box)
 * [baremettle/ubuntu-14.04](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-ubuntu-14.04-libvirt.box)
 * [baremettle/debian-7.5](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-debian-7.5-libvirt.box)
 * [baremettle/centos-5.10](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-centos-5.10-libvirt.box)
 * [baremettle/centos-6.5](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-centos-6.5-libvirt.box)
+-->
 
 ## Installation
 Currently the best thing to do is to clone this repo and use bundler:
