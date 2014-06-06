@@ -7,6 +7,8 @@ bento-qemu is a wrapper around Chef Software's
 [vagrant-libvirt](https://github.com/pradels/vagrant-libvirt) and (eventually?)
 [vagrant-kvm](https://github.com/adrahon/vagrant-kvm) providers.
 
+**Warning!!** This project is a work-in-progress. The end result (templates and currently hosted boxes)
+are fine but the CLI tools need work (I'm a ruby n00b).
 
 ## Features
 - Uses thor; tasks can be ran from CLI app or as thor tasks using included Thorfile
