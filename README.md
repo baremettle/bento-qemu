@@ -17,9 +17,19 @@ bento-qemu is a wrapper around Chef Software's
 - Other misc. tasks for template validation, cleanup, etc.
 
 ## Hosted Baseboxes
-This is a placeholder. I intend to put a handful of libvirt baseboxes for popular distros on
-[Vagrant Cloud](https://vagrantcloud.com/) when I have the chance. They will be discoverable
-there; however I'll also include links to the actual box files here as well.
+The following baseboxes are publicly available and were built using
+this project. Note that these baseboxes are effectively the same as
+other Bento baseboxes, so they are basic installs and do not include
+Chef Client. All boxes listed below are 64-bit and are also discoverable
+on [Vagrant Cloud](https://vagrantcloud.com/).
+
+### Libvirt
+* [ubuntu-12.04](http://downloads.baremettle.net/vagrant/libvirt/baremettle-ubuntu-12.04-libvirt.box)
+* [ubuntu-14.04](http://downloads.baremettle.net/vagrant/libvirt/baremettle-ubuntu-14.04-libvirt.box)
+* [debian-7.5](http://downloads.baremettle.net/vagrant/libvirt/baremettle-debian-7.5-libvirt.box)
+* [centos-5.10](http://downloads.baremettle.net/vagrant/libvirt/baremettle-centos-5.10-libvirt.box)
+* [centos-6.5](http://downloads.baremettle.net/vagrant/libvirt/baremettle-centos-6.5-libvirt.box)
+
 ## Installation
 Currently the best thing to do is to clone this repo and use bundler:
 
