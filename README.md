@@ -26,11 +26,11 @@ Chef Client. All boxes listed below are 64-bit and are also discoverable
 on [Vagrant Cloud](https://vagrantcloud.com/).
 
 ### Libvirt
-* [ubuntu-12.04](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-ubuntu-12.04-libvirt.box)
-* [ubuntu-14.04](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-ubuntu-14.04-libvirt.box)
-* [debian-7.5](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-debian-7.5-libvirt.box)
-* [centos-5.10](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-centos-5.10-libvirt.box)
-* [centos-6.5](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-centos-6.5-libvirt.box)
+* [baremettle/ubuntu-12.04](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-ubuntu-12.04-libvirt.box)
+* [baremettle/ubuntu-14.04](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-ubuntu-14.04-libvirt.box)
+* [baremettle/debian-7.5](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-debian-7.5-libvirt.box)
+* [baremettle/centos-5.10](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-centos-5.10-libvirt.box)
+* [baremettle/centos-6.5](https://s3.amazonaws.com/bento-qemu/vagrant/libvirt/baremettle-centos-6.5-libvirt.box)
 
 ## Installation
 Currently the best thing to do is to clone this repo and use bundler:
@@ -60,22 +60,26 @@ $ bundle exec bento-qemu update-bento
 $ bundle exec bento-qemu validate
 $ bundle exec bento-qemu [build | build-and-box | invoke-from-yaml] etc.
 ```
-The "invoke-from-yaml" is intended to create an automated workflow for builds, etc. A `sample_tasks.yml`
-file is included, but any thor task in this app can be ran as long as it exists.
+The `invoke-from-yaml` is intended to create an automated workflow for builds, etc. A
+[`sample_tasks.yml`](https://github.com/baremettle/bento-qemu/blob/master/sample_task_list.yml)
+
+file is included, but any thor task in this app should ultimately run if declared properly in the file.
 
 ## Requirements
 - thor
 - mixlib-shellout
 - Packer (generating qcow2 files)
 - qemu-img (for building libvirt box)
-- virt-sparsify (optional, for box building)
+- virt-sparsify (optional, for box sparsifying and converting)
 
 ## TODO
 - Documentation
 - Tests and testing
 - Build from pattern/wildcard (e.g. Bento's existing packer build task)
 
-## Copyright
+## License & Copyright
+Bento is a project of Chef Software and it's related license and README can be viewed on the [Bento project site](https://github.com/opscode/bento).
+
 ```text
 Copyright (c) 2014 Brian Clark
 
