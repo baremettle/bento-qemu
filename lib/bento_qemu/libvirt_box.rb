@@ -89,9 +89,9 @@ module BentoQemu
     def metadata
       <<-EOS.gsub(/^ {6}/, '')
       {
-        "provider" => "libvirt",
-        "format" => "qcow",
-        "virtual_size" => #{virtual_size.to_i / 1_073_741_824}
+        "provider": "libvirt",
+        "format": "qcow2",
+        "virtual_size": #{virtual_size.to_i / 1_073_741_824}
       }
       EOS
     end
