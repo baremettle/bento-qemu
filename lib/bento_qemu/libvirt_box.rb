@@ -69,7 +69,7 @@ module BentoQemu
       when 'qemu-img'
         cmd = %(qemu-img convert -p -O qcow2)
       when 'virt-sparsify'
-        cmd = %(TMPDIR='.' virt-sparsify --convert qcow2)
+        cmd = %(TMPDIR='.' virt-sparsify --verbose --convert qcow2)
         env = { 'LIBGUESTFS_CACHEDIR' => '/var/tmp', 'TMPDIR' => '.' }
       else
         fail "Unsupported conversion tool #{@convert_tool}"
@@ -91,7 +91,7 @@ module BentoQemu
       {
         "provider" => "libvirt",
         "format" => "qcow",
-        "virtual_size" => "#{virtual_size.to_i / 1_073_741_824}""
+        "virtual_size" => #{virtual_size.to_i / 1_073_741_824}
       }
       EOS
     end
