@@ -12,6 +12,7 @@ module BentoQemu
       normalize_run_list(run_data['tasks'])
 
       @run_list.each do |task|
+        say "invoking task '#{task[:task]}' with args:#{task[:args]}"
         invoke_me task[:task], task[:args], task[:options]
       end
     end
@@ -41,7 +42,8 @@ module BentoQemu
 
     def invoke_me(task, args = [], options = {})
       task = 'bento-qemu:' << task
-      invoke task, args, options
+      # Invoke using new instance to support calling same task multiple times
+      CLI.new.invoke task, args, options
     end
 
     def req_args(task)
